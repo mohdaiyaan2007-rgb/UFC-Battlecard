@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFC Battlecard</title>
+<style>
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:black;
+color:white;
+}
+
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+padding:20px;
+background:#0b0b0b;
+border-bottom:3px solid red;
+}
+
+.navbar a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+}
+
+.navbar a:hover{
+color:red;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:100px 20px;
+background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.9)),
+url("images/ufc-bg.jpg");
+background-size:cover;
+}
+
+.hero h2{
+font-size:60px;
+color:red;
+}
+
+.countdown{
+font-size:30px;
+margin-top:20px;
+}
+
+/* CARD */
+.container{
+padding:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+}
+
+.card{
+background:#111;
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 25px red;
+transition:0.4s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.fighters{
+display:flex;
+justify-content:space-around;
+align-items:center;
+margin-top:20px;
+}
+
+.vs{
+color:red;
+font-size:28px;
+font-weight:bold;
+}
+
+/* IMAGE */
+.img-box{
+width:160px;
+height:160px;
+border-radius:50%;
+overflow:hidden;
+border:4px solid red;
+box-shadow:0 0 25px red;
+}
+
+.img-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.4s;
+}
+
+.img-box img:hover{
+transform:scale(1.15);
+}
+
+/* BUTTON */
+button{
+margin-top:10px;
+padding:8px 14px;
+background:red;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:white;
+color:red;
+}
+
+.stats{
+display:none;
+font-size:14px;
+margin-top:8px;
+color:#ccc;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#0b0b0b;
+margin-top:40px;
+}
+
+@media(max-width:600px){
+.fighters{
+flex-direction:column;
+gap:20px;
+}
+.vs{
+display:none;
+}
+}
+
+
+.overlay{
+height:100%;
+background:rgba(0,0,0,0.85);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* TICKET BOX */
+.ticket-section{
+height:100vh;                 /* full screen height */
+display:flex;
+justify-content:center;       /* horizontal center */
+align-items:center;           /* vertical center */
+background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.9)),
+url("images/stadium.jpg");
+background-size:cover;
+background-position:center;
+}
+
+/* FORM BOX */
+.ticket-form{
+width:400px;
+padding:40px;
+background:rgba(20,20,20,0.85);
+border-radius:20px;
+box-shadow:0 0 35px red;
+display:flex;
+flex-direction:column;
+gap:15px;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+.ticket-form h1{
+color:red;
+margin-bottom:10px;
+}
+
+.ticket-form input,
+.ticket-form select{
+padding:12px;
+border:none;
+border-radius:8px;
+background:#111;
+color:white;
+outline:none;
+}
+
+.ticket-form input:focus,
+.ticket-form select:focus{
+box-shadow:0 0 15px red;
+}
+
+.ticket-form button{
+padding:14px;
+background:red;
+border:none;
+color:white;
+font-size:16px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.ticket-form button:hover{
+background:white;
+color:red;
+transform:scale(1.05);
+}
+/* BUTTON */
+
+button{
+margin-top:20px;
+width:100%;
+padding:14px;
+background:red;
+border:none;
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+letter-spacing:2px;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+background:white;
+color:red;
+transform:scale(1.05);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:500px){
+
+.ticket-box{
+width:90%;
+padding:25px;
+}
+
+.row{
+flex-direction:column;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+<h1 class="logo">UFC 300</h1>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#fightcard">Fight Card</a>
+<a href="#tickets">Tickets</a>
+<a href="#contact">Contact</a>
+
+
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<h2>LEGENDS REBORN</h2>
+<p>Biggest Fight Night Event</p>
+</section>
+
+<!-- FIGHT CARD -->
+<section class="container" id="fightcard">
+
+<div class="card">
+<h2>Lightweight Bout</h2>
+
+<div class="fighters">
+
+<div class="fighter">
+<div class="img-box">
+<img src="Con.jpg">
+</div>
+<h3>Conor McGregor</h3>
+<button onclick="toggleStats('s1')">Stats</button>
+<div class="stats" id="s1">
+Record: 22-6 <br> Sty
+le: Striker
+</div>
+</div>
+
+<div class="vs">VS</div>
+
+<div class="fighter">
+<div class="img-box">
+<img src="Dus.jpg">
+</div>
+<h3>Dustin Poirier</h3>
+<button onclick="toggleStats('s2')">Stats</button>
+<div class="stats" id="s2">
+Record: 30-8 <br> Style: Boxer
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<h2>Championship Bout</h2>
+
+<div class="fighters">
+
+<div class="fighter">
+<div class="img-box">
+<img src="Isl.jpg">
+</div>
+<h3>Islam Makhachev</h3>
+<button onclick="toggleStats('s3')">Stats</button>
+<div class="stats" id="s3">
+Record: 26-1 <br> Style: Grappler
+</div>
+</div>
+
+<div class="vs">VS</div>
+
+<div class="fighter">
+<div class="img-box">
+<img src="stip.jpg">
+</div>
+<h3>Stipe Miocic</h3>
+<button onclick="toggleStats('s4')">Stats</button>
+<div class="stats" id="s4">
+Record: 20-4 <br> Style: Wrestler
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<h2>Main Event</h2>
+
+<div class="fighters">
+
+<div class="fighter">
+<div class="img-box">
+<img src="Nat.jpg">
+</div>
+<h3>Nate Diaz</h3>
+<button onclick="toggleStats('s5')">Stats</button>
+<div class="stats" id="s5">
+Record: 21-13 <br> Style: Submission
+</div>
+</div>
+
+<div class="vs">VS</div>
+
+<div class="fighter">
+<div class="img-box">
+<img src="Alex.jpg">
+</div>
+<h3>Alex Pereira</h3>
+<button onclick="toggleStats('s6')">Stats</button>
+<div class="stats" id="s6">
+Record: 10-2 <br> Style: Kickboxer
+</div>
+</div>
+
+</div>
+</div>
+
+</section>
+
+<!-- TICKET SECTION -->
+<section class="ticket-section" id="tickets">
+
+<form class="ticket-form">
+
+<h1>🎟 Book Tickets</h1>
+
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email">
+
+<select>
+<option>Select Fight</option>
+<option>McGregor vs Poirier</option>
+<option>Islam vs Stipe</option>
+<option>Diaz vs Pereira</option>
+</select>
+
+<input type="number" placeholder="Tickets">
+
+<select>
+<option>Seat Type</option>
+<option>VIP</option>
+<option>Premium</option>
+<option>Standard</option>
+</select>
+
+<button>Confirm Booking</button>
+
+</form>
+
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+<h2>Contact UFC Arena</h2>
+<p>Email: ufc@gmail.com</p>
+<p>Phone: +91 9999999999</p>
+<p>© 2026 UFC Fan Website</p>
+</footer>
+
+<script>
+    function toggleStats(id){
+
+  let x=document.getElementById(id);
+
+  if(x.style.display==="block"){
+  x.style.display="none";
+  }
+  else{
+  x.style.display="block";
+  }
+
+ }
+</script>
+</body>
+</html>
